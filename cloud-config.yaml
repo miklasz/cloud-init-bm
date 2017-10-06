@@ -1,0 +1,133 @@
+#cloud-config
+manage_resolv_conf: true
+resolv_conf:
+  nameservers: ['8.8.4.4', '8.8.8.8']
+users:
+  - name: bart
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    passwd: password-goes-here
+    shell: /bin/bash
+    expire: False
+    ssh-authorized-keys:
+      - ssh-rsa pub-key-goes-here
+      - ssh-rsa pub-key-goes-here
+apt_get_command: [update]
+packages:
+  - fail2ban
+  - htop
+  - zsh
+#chpasswd:
+#  list: |
+#    bart:bart
+# Add groups to the system
+# The following example adds the ubuntu group with members foo and bar and
+# the group cloud-users.
+
+
+
+# Add users to the system. Users are added after groups are added.
+#users:
+#  - default
+#  - name: foobar
+#    gecos: Foo B. Bar
+#    primary-group: foobar
+#    groups: users
+#    selinux-user: staff_u
+#    expiredate: 2012-09-01
+#    ssh-import-id: foobar
+#    lock_passwd: false
+#    passwd: $6$j212wezy$7H/1LT4f9/N3wpgNunhsIqtMj62OKiS3nyNwuizouQc3u7MbYCarYeAHWYPYb2FT.lbioDm2RrkJPb9BZMN1O/
+#  - name: bart
+#    gecos: Bartosz Miklaszewski
+#    sudo: ALL=(ALL) NOPASSWD:ALL
+#    groups: users, admin
+#    ssh-import-id: None
+#    lock_passwd: true
+#    ssh-authorized-keys:
+#      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGnNrrrN1lVXvGWKWKvRUFo63KY4C0O2dM9xlJJ/WOTsO4w/7WcGtJUtzVAGH8XT9oPYaXaoD7I954KbPZ8lNUa8/J9mNAhRE7dMkTbj6xV3oYG6aIhutow03pxla9ihW11tpnzgzpihEu9ErxBRkNRRPIYSwqUKm2awbWLzah/cqDZ3q2qJ3Qa0FdKCWVbP3l2CA4osG5bSeA6VbGA6QG8vkREaxjVRxj1aCsn/abmHlcKn7fFgU2+m0gAcVuW/COyR/0AKg7PTu3kZchhbcFA5ThTrcdJsKTJSv1/mWwTEgkolrxgoF9S9tTyNq48YlpjUnghANmgjunwGTSbBx7'
+#      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCazpEMrUH/tmliXAH1xduBbiodcGEHv7j/C1gmJLPL1w1KiPhCoymqA/PUEERZDZ2Lpl02i0wL7ynP7s7uQ/2T5fmNWhjTY9/X+KuQ8vxUGSAWMKeD4/Hy5mJ+OeutsChbtztSGjKBJbogXHhO7xYXkGOylKVW3UuRUC2Wl0Brke0kw1ZRpgUBz6UjlXEncwYtVh0XcTaKG3KcOzEEoG1a3AE2DcFyLPJyXYuFqCERdAAqQR0vGUaQhZvash1CxBsUoCdi+xCfZ9cXH6v3VYg59Nrl1NGKfdRrQ1Il/uiBPfQ12XJo7oreciLAN2DMsytOXdxuy9y2xd/YugKGW3q/'
+
+
+# Valid Values:
+#   name: The user's login name
+#   gecos: The user name's real name, i.e. "Bob B. Smith"
+#   homedir: Optional. Set to the local path you want to use. Defaults to
+#           /home/<username>
+#   primary-group: define the primary group. Defaults to a new group created
+#           named after the user.
+#   groups:  Optional. Additional groups to add the user to. Defaults to none
+#   selinux-user:  Optional. The SELinux user for the user's login, such as
+#           "staff_u". When this is omitted the system will select the default
+#           SELinux user.
+#   lock_passwd: Defaults to true. Lock the password to disable password login
+#   inactive: Create the user as inactive
+#   passwd: The hash -- not the password itself -- of the password you want
+#           to use for this user. You can generate a safe hash via:
+#               mkpasswd --method=SHA-512 --rounds=4096
+#           (the above command would create from stdin an SHA-512 password hash
+#           with 4096 salt rounds)
+#
+#           Please note: while the use of a hashed password is better than
+#               plain text, the use of this feature is not ideal. Also,
+#               using a high number of salting rounds will help, but it should
+#               not be relied upon.
+#
+#               To highlight this risk, running John the Ripper against the
+#               example hash above, with a readily available wordlist, revealed
+#               the true password in 12 seconds on a i7-2620QM.
+#
+#               In other words, this feature is a potential security risk and is
+#               provided for your convenience only. If you do not fully trust the
+#               medium over which your cloud-config will be transmitted, then you
+#               should use SSH authentication only.
+#
+#               You have thus been warned.
+#   no-create-home: When set to true, do not create home directory.
+#   no-user-group: When set to true, do not create a group named after the user.
+#   no-log-init: When set to true, do not initialize lastlog and faillog database.
+#   ssh-import-id: Optional. Import SSH ids
+#   ssh-authorized-keys: Optional. [list] Add keys to user's authorized keys file
+#   sudo: Defaults to none. Set to the sudo string you want to use, i.e.
+#           ALL=(ALL) NOPASSWD:ALL. To add multiple rules, use the following
+#           format.
+#               sudo:
+#                   - ALL=(ALL) NOPASSWD:/bin/mysql
+#                   - ALL=(ALL) ALL
+#           Note: Please double check your syntax and make sure it is valid.
+#               cloud-init does not parse/check the syntax of the sudo
+#               directive.
+#   system: Create the user as a system user. This means no home directory.
+#   snapuser: Create a Snappy (Ubuntu-Core) user via the snap create-user
+#             command available on Ubuntu systems.  If the user has an account
+#             on the Ubuntu SSO, specifying the email will allow snap to
+#             request a username and any public ssh keys and will import
+#             these into the system with username specifed by SSO account.
+#             If 'username' is not set in SSO, then username will be the
+#             shortname before the email domain.
+#
+
+# Default user creation:
+#
+# Unless you define users, you will get a 'ubuntu' user on ubuntu systems with the
+# legacy permission (no password sudo, locked user, etc). If however, you want
+# to have the 'ubuntu' user in addition to other users, you need to instruct
+# cloud-init that you also want the default user. To do this use the following
+# syntax:
+#    users:
+#      - default
+#      - bob
+#      - ....
+#  foobar: ...
+#
+# users[0] (the first user in users) overrides the user directive.
+#
+# The 'default' user above references the distro's config:
+# system_info:
+#   default_user:
+#    name: Ubuntu
+#    plain_text_passwd: 'ubuntu'
+#    home: /home/ubuntu
+#    shell: /bin/bash
+#    lock_passwd: True
+#    gecos: Ubuntu
+#    groups: [adm, audio, cdrom, dialout, floppy, video, plugdev, dip, netdev]
