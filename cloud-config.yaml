@@ -36,7 +36,7 @@ packages:
 #    expiredate: 2012-09-01
 #    ssh-import-id: foobar
 #    lock_passwd: false
-#    passwd: $6$j212wezy$7H/1LT4f9/N3wpgNunhsIqtMj62OKiS3nyNwuizouQc3u7MbYCarYeAHWYPYb2FT.lbioDm2RrkJPb9BZMN1O/
+#    passwd:
 #  - name: bart
 #    gecos: Bartosz Miklaszewski
 #    sudo: ALL=(ALL) NOPASSWD:ALL
@@ -44,8 +44,8 @@ packages:
 #    ssh-import-id: None
 #    lock_passwd: true
 #    ssh-authorized-keys:
-#      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGnNrrrN1lVXvGWKWKvRUFo63KY4C0O2dM9xlJJ/WOTsO4w/7WcGtJUtzVAGH8XT9oPYaXaoD7I954KbPZ8lNUa8/J9mNAhRE7dMkTbj6xV3oYG6aIhutow03pxla9ihW11tpnzgzpihEu9ErxBRkNRRPIYSwqUKm2awbWLzah/cqDZ3q2qJ3Qa0FdKCWVbP3l2CA4osG5bSeA6VbGA6QG8vkREaxjVRxj1aCsn/abmHlcKn7fFgU2+m0gAcVuW/COyR/0AKg7PTu3kZchhbcFA5ThTrcdJsKTJSv1/mWwTEgkolrxgoF9S9tTyNq48YlpjUnghANmgjunwGTSbBx7'
-#      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCazpEMrUH/tmliXAH1xduBbiodcGEHv7j/C1gmJLPL1w1KiPhCoymqA/PUEERZDZ2Lpl02i0wL7ynP7s7uQ/2T5fmNWhjTY9/X+KuQ8vxUGSAWMKeD4/Hy5mJ+OeutsChbtztSGjKBJbogXHhO7xYXkGOylKVW3UuRUC2Wl0Brke0kw1ZRpgUBz6UjlXEncwYtVh0XcTaKG3KcOzEEoG1a3AE2DcFyLPJyXYuFqCERdAAqQR0vGUaQhZvash1CxBsUoCdi+xCfZ9cXH6v3VYg59Nrl1NGKfdRrQ1Il/uiBPfQ12XJo7oreciLAN2DMsytOXdxuy9y2xd/YugKGW3q/'
+#      - 'ssh-rsa key'
+#      - 'ssh-rsa key'
 
 
 # Valid Values:
